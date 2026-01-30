@@ -3,7 +3,6 @@
 A fun and interactive memory card matching game built with vanilla JavaScript, jQuery, and Webpack. Test your memory skills across three difficulty levels!
 
 ## Features
-
 ✨ **Three Difficulty Levels:**
 - **Easy**: 4×4 grid (8 pairs)
 - **Medium**: 4×6 grid (12 pairs)
