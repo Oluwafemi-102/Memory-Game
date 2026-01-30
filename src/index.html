@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <!-- <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-brain"></i> Memory Game</h1>
+            <p class="subtitle">Find matching pairs of cards. Test your memory!</p>
+        </header>
+        
+        <div class="game-info">
+            <div class="info-box">
+                <div class="info-label"><i class="fas fa-step-forward"></i> Moves</div>
+                <div id="moves" class="info-value">0</div>
+            </div>
+            <div class="info-box">
+                <div class="info-label"><i class="fas fa-clock"></i> Time</div>
+                <div id="timer" class="info-value">0s</div>
+            </div>
+            <div class="info-box">
+                <div class="info-label"><i class="fas fa-star"></i> Matches</div>
+                <div id="matches" class="info-value">0/8</div>
+            </div>
+            <div class="info-box">
+                <div class="info-label"><i class="fas fa-tachometer-alt"></i> Difficulty</div>
+                <div id="difficulty-display" class="info-value">Easy</div>
+            </div>
+        </div>
+        
+        <div class="difficulty">
+            <button class="diff-btn active" data-difficulty="easy">
+                <i class="fas fa-baby"></i> Easy (4x4)
+            </button>
+            <button class="diff-btn" data-difficulty="medium">
+                <i class="fas fa-user"></i> Medium (4x6)
+            </button>
+            <button class="diff-btn" data-difficulty="hard">
+                <i class="fas fa-rocket"></i> Hard (6x6)
+            </button>
+        </div>
+        
+        <div class="controls">
+            <button id="start-btn">
+                <i class="fas fa-play"></i> Start Game
+            </button>
+            <button id="reset-btn">
+                <i class="fas fa-redo"></i> Reset Game
+            </button>
+            <button id="hint-btn">
+                <i class="fas fa-lightbulb"></i> Hint (3)
+            </button>
+        </div>
+        
+        <div class="game-board" id="game-board">
+            <!-- Cards will be generated here -->
+        </div>
+        
+        <div class="instructions">
+            <h3><i class="fas fa-info-circle"></i> How to Play</h3>
+            <ol>
+                <li>Click on a card to flip it</li>
+                <li>Find and match two identical cards</li>
+                <li>Complete all matches with the fewest moves and fastest time</li>
+                <li>Use hints sparingly - you only get 3!</li>
+            </ol>
+        </div>
+        
+        <footer>
+            <p>Memory Game &copy; 2023 | Built with JavaScript & jQuery</p>
+        </footer>
+    </div>
+    
+    <div class="message" id="win-message">
+        <div class="message-content">
+            <h2><i class="fas fa-trophy"></i> Congratulations!</h2>
+            <p id="win-text">You won the game in <span id="final-moves">0</span> moves and <span id="final-time">0</span> seconds!</p>
+            <div class="rating">
+                <h3>Your Rating:</h3>
+                <div id="stars"></div>
+            </div>
+            <div class="message-buttons">
+                <button id="play-again-btn"><i class="fas fa-redo"></i> Play Again</button>
+                <button id="change-diff-btn"><i class="fas fa-sliders-h"></i> Change Difficulty</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="hint-overlay" id="hint-overlay"></div>
+
+
+    <!-- jQuery from node_modules -->
+    <!-- <script src="./node_modules/jquery/dist/jquery.min.js"></script> -->
+    <!-- Our game scripts -->
+    <!-- <script src="./src/js/game.js"></script>
+    <script src="./src/js/ui.js"></script>
+    <script type="module" src="./main.js"></script> -->
+</body>
+</html>
