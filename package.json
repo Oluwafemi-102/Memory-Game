@@ -1,5 +1,5 @@
 {
-  "name": "Memory-Game",
+  "name": "memory-game",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "A fun and interactive memory card matching game built with vanilla JavaScript, jQuery, and Webpack. Test your memory skills across three difficulty levels!",
   "devDependencies": {
     "@babel/core": "7.6.4",
     "@babel/plugin-transform-modules-commonjs": "7.6.0",
@@ -30,5 +30,13 @@
     "bootstrap": "5.3.3",
     "jquery": "3.7.1",
     "popper.js": "1.16.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oluwafemi-102/Memory-Game.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Oluwafemi-102/Memory-Game/issues"
+  },
+  "homepage": "https://github.com/Oluwafemi-102/Memory-Game#readme"
 }

@@ -1,0 +1,31 @@
+/* Fruits Theme (Default) */
+.theme-default {
+    --bg-gradient-1: #1a2a6c;
+    --bg-gradient-2: #b21f1f;
+    --bg-gradient-3: #fdbb2d;
+    --card-front-bg: linear-gradient(135deg, #2c3e50, #4a6491);
+}
+
+/* Animals Theme */
+.theme-animals {
+    --bg-gradient-1: #0f4c5c;
+    --bg-gradient-2: #1b998b;
+    --bg-gradient-3: #ed6a5a;
+    --card-front-bg: linear-gradient(135deg, #2d5a27, #4a7c59);
+}
+
+/* Flags Theme */
+.theme-flags {
+    --bg-gradient-1: #003049;
+    --bg-gradient-2: #d62828;
+    --bg-gradient-3: #f77f00;
+    --card-front-bg: linear-gradient(135deg, #184e77, #1e6091);
+}
+
+/* Emoji Theme */
+.theme-emoji {
+    --bg-gradient-1: #6a11cb;
+    --bg-gradient-2: #2575fc;
+    --bg-gradient-3: #ff7e5f;
+    --card-front-bg: linear-gradient(135deg, #7b2cbf, #9d4edd);
+}

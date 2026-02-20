@@ -3,93 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Game</title>
+    <title>Memory Game Pro - Timer Challenge</title>
 </head>
-<body>
+<body class="theme-default">
     <div class="container">
         <header>
-            <h1><i class="fas fa-brain"></i> Memory Game</h1>
-            <p class="subtitle">Find matching pairs of cards. Test your memory!</p>
+            <h1><span class="icon">🧠</span> Memory Game Pro</h1>
+            <p class="subtitle">Match pairs before time runs out!</p>
         </header>
         
         <div class="game-info">
             <div class="info-box">
-                <div class="info-label"><i class="fas fa-step-forward"></i> Moves</div>
+                <div class="info-label">🎯 Moves</div>
                 <div id="moves" class="info-value">0</div>
             </div>
             <div class="info-box">
-                <div class="info-label"><i class="fas fa-clock"></i> Time</div>
+                <div class="info-label">⏱️ Time</div>
                 <div id="timer" class="info-value">0s</div>
             </div>
             <div class="info-box">
-                <div class="info-label"><i class="fas fa-star"></i> Matches</div>
+                <div class="info-label">⭐ Matches</div>
                 <div id="matches" class="info-value">0/8</div>
             </div>
-            <div class="info-box">
-                <div class="info-label"><i class="fas fa-tachometer-alt"></i> Difficulty</div>
-                <div id="difficulty-display" class="info-value">Easy</div>
+            <div class="info-box timer-critical">
+                <div class="info-label">⚠️ Time Limit</div>
+                <div id="time-limit" class="info-value">120s</div>
             </div>
         </div>
         
-        <div class="difficulty">
-            <button class="diff-btn active" data-difficulty="easy">
-                <i class="fas fa-baby"></i> Easy (4x4)
-            </button>
-            <button class="diff-btn" data-difficulty="medium">
-                <i class="fas fa-user"></i> Medium (4x6)
-            </button>
-            <button class="diff-btn" data-difficulty="hard">
-                <i class="fas fa-rocket"></i> Hard (6x6)
-            </button>
+        <div class="timer-warning" id="timer-warning">
+            ⏰ HURRY! Time is running out!
         </div>
         
-        <div class="controls">
-            <button id="start-btn">
-                <i class="fas fa-play"></i> Start Game
-            </button>
-            <button id="reset-btn">
-                <i class="fas fa-redo"></i> Reset Game
-            </button>
-            <button id="hint-btn">
-                <i class="fas fa-lightbulb"></i> Hint (3)
-            </button>
+        <div class="game-controls">
+            <div class="control-group">
+                <h3>🎮 Difficulty</h3>
+                <div class="difficulty">
+                    <button class="diff-btn active" data-difficulty="easy">🟢 Easy (4x4)</button>
+                    <button class="diff-btn" data-difficulty="medium">🟡 Medium (4x6)</button>
+                    <button class="diff-btn" data-difficulty="hard">🟠 Hard (6x6)</button>
+                    <button class="diff-btn" data-difficulty="expert">🔴 Expert (6x8)</button>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <h3>🎨 Theme</h3>
+                <div class="themes">
+                    <button class="theme-btn active" data-theme="default">🍎 Fruits</button>
+                    <button class="theme-btn" data-theme="animals">🐶 Animals</button>
+                    <button class="theme-btn" data-theme="flags">🏁 Flags</button>
+                    <button class="theme-btn" data-theme="emoji">😊 Emoji</button>
+                </div>
+            </div>
         </div>
         
-        <div class="game-board" id="game-board">
-            <!-- Cards will be generated here -->
+        <div class="main-controls">
+            <button id="start-btn">▶️ Start Game</button>
+            <button id="pause-btn">⏸️ Pause</button>
+            <button id="reset-btn">🔄 Reset</button>
+            <button id="hint-btn">💡 Hint (<span id="hint-count">3</span>)</button>
+            <button id="sound-btn">🔊 Sound</button>
         </div>
         
-        <div class="instructions">
-            <h3><i class="fas fa-info-circle"></i> How to Play</h3>
-            <ol>
-                <li>Click on a card to flip it</li>
-                <li>Find and match two identical cards</li>
-                <li>Complete all matches with the fewest moves and fastest time</li>
-                <li>Use hints sparingly - you only get 3!</li>
-            </ol>
+        <div class="game-board-container">
+            <div class="game-board" id="game-board"></div>
+        </div>
+        
+        <div class="game-stats">
+            <div class="stat-card">
+                <h4>⚡ Game Speed</h4>
+                <div class="speed-control">
+                    <button id="speed-down">−</button>
+                    <span id="speed-display">Normal</span>
+                    <button id="speed-up">+</button>
+                </div>
+            </div>
+            <div class="stat-card">
+                <h4>🏆 Best Score</h4>
+                <div class="best-score" id="best-score">
+                    <div>Easy: <span id="best-easy">0</span></div>
+                    <div>Medium: <span id="best-medium">0</span></div>
+                    <div>Hard: <span id="best-hard">0</span></div>
+                    <div>Expert: <span id="best-expert">0</span></div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <h4>📊 Progress</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text" id="progress-text">0% Complete</div>
+            </div>
+        </div>
+        
+        <div class="achievements">
+            <h3>🏅 Recent Achievements</h3>
+            <div class="achievements-list" id="achievements-list"></div>
         </div>
         
         <footer>
-            <p>Memory Game &copy; 2026 | Built with JavaScript & jQuery</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>🎯 Memory Game Pro</h4>
+                    <p>Test your memory under pressure!</p>
+                </div>
+                <div class="footer-section">
+                    <h4>⏰ Timer Challenge</h4>
+                    <ul>
+                        <li>Easy: 180 seconds</li>
+                        <li>Medium: 150 seconds</li>
+                        <li>Hard: 120 seconds</li>
+                        <li>Expert: 90 seconds</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Memory Game Pro © 2024 | Built with Webpack & ES6 Modules</p>
+            </div>
         </footer>
     </div>
     
+    <!-- Game Messages -->
     <div class="message" id="win-message">
         <div class="message-content">
-            <h2><i class="fas fa-trophy"></i> Congratulations!</h2>
-            <p id="win-text">You won the game in <span id="final-moves">0</span> moves and <span id="final-time">0</span> seconds!</p>
-            <div class="rating">
-                <h3>Your Rating:</h3>
-                <div id="stars"></div>
+            <h2>🏆 Victory!</h2>
+            <p>You completed the game in <span id="final-moves">0</span> moves!</p>
+            <div class="message-stats">
+                <div>Time: <span id="final-time">0s</span></div>
+                <div>Score: <span id="final-score">0</span></div>
+                <div>Rating: <span id="final-rating">★★★</span></div>
+            </div>
+            <div class="new-achievements" id="new-achievements">
+                <h4>🎖️ New Achievements</h4>
             </div>
             <div class="message-buttons">
-                <button id="play-again-btn"><i class="fas fa-redo"></i> Play Again</button>
-                <button id="change-diff-btn"><i class="fas fa-sliders-h"></i> Change Difficulty</button>
+                <button id="play-again-btn">🔄 Play Again</button>
+                <button id="change-diff-btn">🎮 New Game</button>
             </div>
         </div>
     </div>
-
+    
+    <div class="message" id="timeout-message">
+        <div class="message-content timeout">
+            <h2>⏰ Time's Up!</h2>
+            <p>You ran out of time! Better luck next time.</p>
+            <div class="message-stats">
+                <div>Moves Made: <span id="timeout-moves">0</span></div>
+                <div>Matches Found: <span id="timeout-matches">0</span></div>
+            </div>
+            <div class="message-buttons">
+                <button id="try-again-btn">🔄 Try Again</button>
+                <button id="timeout-change-diff">🎮 Change Difficulty</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="message" id="pause-message">
+        <div class="message-content">
+            <h2>⏸️ Game Paused</h2>
+            <p>Take a break! Click resume to continue.</p>
+            <div class="message-buttons">
+                <button id="resume-btn">▶️ Resume</button>
+                <button id="restart-btn">🔄 Restart</button>
+            </div>
+        </div>
+    </div>
+    
     <div class="hint-overlay" id="hint-overlay"></div>
-
 </body>
 </html>
